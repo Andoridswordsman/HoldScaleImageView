@@ -26,8 +26,27 @@ scaleType有的是支持缩放的，但是会把超出部分裁剪掉。
 实现思路就是自定义onMeasure(),根据上面的公式手动算出缩放后的大小，从而设置控件大小
 
 使用方法：
-1.设置android:scaleType="centerCrop"
-2.android:layout_width或layout_height设置固定值
-3.设置app:holdHeight="true"或app:holdWidth="true"，含义是高度/宽度固定，必须和第2条设置的对应
+
+ 1.设置android:scaleType="centerCrop"
+ 
+ 2.android:layout_width或layout_height设置固定值
+ 
+ 3.设置app:holdHeight="true"或app:holdWidth="true"，含义是高度/宽度固定，必须和第2条设置的对应
+ 
+Step 1. Add the JitPack repository to your build file
+
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        compile 'com.github.Blankeer:HoldScaleImageView:0.1'
+	}
 
 
