@@ -39,6 +39,7 @@ public class HoldScaleImageView extends ImageView {
                 attrs, R.styleable.HoldScaleImageView, defStyleAttr, defStyleRes);
         holdWidth = a.getBoolean(R.styleable.HoldScaleImageView_holdWidth, false);
         holdHeight = a.getBoolean(R.styleable.HoldScaleImageView_holdHeight, false);
+        a.recycle();
         mDrawable = getDrawable();
         mDrawableWidth = mDrawable.getIntrinsicWidth();
         mDrawableHeight = mDrawable.getIntrinsicHeight();
