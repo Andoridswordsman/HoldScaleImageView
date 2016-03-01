@@ -2,7 +2,7 @@
 最近的需求，希望imageview的宽度固定，高度随图片的缩放大小一致，保持图片的缩放比。
 scaleType有的是支持缩放的，但是会把超出部分裁剪掉。
 我希望的样子是，图片尺寸x\*y，控件宽度固定为w，控件高度会随图片缩放后的高度来定，也就是w\*y/x
-最终效果图：[!]()
+最终效果图：![image](https://github.com/Blankeer/HoldScaleImageView/blob/master/image.png)
 每行左边的是最终自定义控件效果。
 第一行，规定宽度为100dp,scaleType="centerCrop"
 第二行宽度也是100dp，scaleType="fitCenter"
