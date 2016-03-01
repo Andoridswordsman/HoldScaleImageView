@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4400ff00"
+    android:orientation="vertical"
+    android:padding="3dp"
+    tools:context="com.blanke.holdsample.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.blanke.hold.HoldScaleImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="#44ff0000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"
+            app:holdWidth="true" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="#44ff0000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.blanke.hold.HoldScaleImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="50dp"
+            android:background="#44ff0000"
+            android:scaleType="fitCenter"
+            android:src="@drawable/test"
+            app:holdWidth="true" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="#44ff0000"
+            android:scaleType="fitCenter"
+            android:src="@drawable/test" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.blanke.hold.HoldScaleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="#44ff0000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"
+            app:holdHeight="true" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="#44ff0000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test" />
+    </LinearLayout>
+
+</LinearLayout>

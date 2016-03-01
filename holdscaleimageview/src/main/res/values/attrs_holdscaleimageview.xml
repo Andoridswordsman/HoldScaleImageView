@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HoldScaleImageView">
+        <attr name="holdWidth" format="boolean" />
+        <attr name="holdHeight" format="boolean" />
+    </declare-styleable>
+</resources>

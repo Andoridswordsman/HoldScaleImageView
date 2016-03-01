@@ -1,0 +1,73 @@
+package com.blanke.hold;
+
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.widget.ImageView;
+
+import com.blanke.holdscaleimageview.R;
+
+/**
+ * Created by Blanke on 16-2-29.
+ */
+public class HoldScaleImageView extends ImageView {
+
+    private final Drawable mDrawable;
+    private int mDrawableWidth;
+    private int mDrawableHeight;
+    private boolean holdWidth, holdHeight;
+
+    public HoldScaleImageView(Context context) {
+        this(context, null);
+    }
+
+    public HoldScaleImageView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public HoldScaleImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+        this(context, attrs, defStyleAttr, 0);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public HoldScaleImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        final TypedArray a = context.obtainStyledAttributes(
+                attrs, R.styleable.HoldScaleImageView, defStyleAttr, defStyleRes);
+        holdWidth = a.getBoolean(R.styleable.HoldScaleImageView_holdWidth, false);
+        holdHeight = a.getBoolean(R.styleable.HoldScaleImageView_holdHeight, false);
+        mDrawable = getDrawable();
+        mDrawableWidth = mDrawable.getIntrinsicWidth();
+        mDrawableHeight = mDrawable.getIntrinsicHeight();
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        if (holdHeight != holdWidth) {
+            int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+            int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+            if (holdWidth) {
+                int finalHeightSize = getHoldHeight(widthSize);
+                setMeasuredDimension(widthSize + getPaddingLeft() + getPaddingRight()
+                        , Math.min(finalHeightSize, heightSize) + getPaddingTop() + getPaddingBottom());
+            } else {
+                int finalWidthSize = getHoldWidth(heightSize);
+                setMeasuredDimension(Math.min(widthSize, finalWidthSize) + getPaddingLeft() + getPaddingRight()
+                        , heightSize + getPaddingTop() + getPaddingBottom());
+            }
+            return;
+        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    private int getHoldHeight(int widthSize) {
+        return widthSize * mDrawableHeight / mDrawableWidth;
+    }
+
+    private int getHoldWidth(int heightSize) {
+        return heightSize * mDrawableWidth / mDrawableHeight;
+    }
+}
