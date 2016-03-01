@@ -11,3 +11,10 @@ scaleType有的是支持缩放的，但是会把超出部分裁剪掉。
 第二行右边的图片缩放在中间，导致控件上下还有多的间隙
 第三行和前面的情况相反，固定高度，宽度跟随改变
 实现思路就是自定义onMeasure(),根据上面的公式手动算出缩放后的大小，从而设置控件大小
+
+使用方法：
+1.设置android:scaleType="centerCrop"
+2.android:layout_width或layout_height设置固定值
+3.设置app:holdHeight="true"或app:holdWidth="true"，含义是高度/宽度固定，必须和第2条设置的对应
+
+
