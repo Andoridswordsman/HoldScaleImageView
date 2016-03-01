@@ -6,6 +6,7 @@ scaleType有的是支持缩放的，但是会把超出部分裁剪掉。
 我希望的样子是，图片尺寸x\*y，控件宽度固定为w，控件高度会随图片缩放后的高度来定，也就是w\*y/x
 
 最终效果图：
+
 ![image](https://github.com/Blankeer/HoldScaleImageView/blob/master/image.png)
 
 每行左边的是最终自定义控件效果。
