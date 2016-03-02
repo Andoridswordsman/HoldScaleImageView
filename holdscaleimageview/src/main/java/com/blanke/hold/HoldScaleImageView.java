@@ -15,7 +15,7 @@ import com.blanke.holdscaleimageview.R;
  */
 public class HoldScaleImageView extends ImageView {
 
-    private final Drawable mDrawable;
+    private Drawable mDrawable;
     private int mDrawableWidth;
     private int mDrawableHeight;
     private boolean holdWidth, holdHeight;
@@ -41,15 +41,30 @@ public class HoldScaleImageView extends ImageView {
         holdHeight = a.getBoolean(R.styleable.HoldScaleImageView_holdHeight, false);
         a.recycle();
         mDrawable = getDrawable();
-        mDrawableWidth = mDrawable.getIntrinsicWidth();
-        mDrawableHeight = mDrawable.getIntrinsicHeight();
+        initImage();
+    }
+
+    private void initImage() {
+        if (mDrawable != null) {
+            mDrawableWidth = mDrawable.getIntrinsicWidth();
+            mDrawableHeight = mDrawable.getIntrinsicHeight();
+        }
+    }
+
+    @Override
+    public void setImageDrawable(Drawable drawable) {
+        super.setImageDrawable(drawable);
+        mDrawable = drawable;
+        initImage();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        if (holdHeight != holdWidth) {
+        if (holdHeight != holdWidth && mDrawable != null) {
             int widthSize = MeasureSpec.getSize(widthMeasureSpec);
             int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+            int widthMode = MeasureSpec.getMode(widthSize);
+            int heightMode = MeasureSpec.getMode(heightSize);
             if (holdWidth) {
                 int finalHeightSize = getHoldHeight(widthSize);
                 setMeasuredDimension(widthSize + getPaddingLeft() + getPaddingRight()
