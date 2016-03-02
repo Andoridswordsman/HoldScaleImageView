@@ -66,17 +66,29 @@ public class HoldScaleImageView extends ImageView {
             int widthMode = MeasureSpec.getMode(widthSize);
             int heightMode = MeasureSpec.getMode(heightSize);
             if (holdWidth) {
-                int finalHeightSize = getHoldHeight(widthSize);
+                int calcHeightSize = getHoldHeight(widthSize);
+                int finalHeightSize = getFinalSize(calcHeightSize, heightSize);
                 setMeasuredDimension(widthSize + getPaddingLeft() + getPaddingRight()
-                        , Math.min(finalHeightSize, heightSize) + getPaddingTop() + getPaddingBottom());
+                        , finalHeightSize + getPaddingTop() + getPaddingBottom());
             } else {
-                int finalWidthSize = getHoldWidth(heightSize);
-                setMeasuredDimension(Math.min(widthSize, finalWidthSize) + getPaddingLeft() + getPaddingRight()
+                int calcWidthSize = getHoldWidth(heightSize);
+                int finalWidthSize = getFinalSize(calcWidthSize, widthSize);
+                setMeasuredDimension(finalWidthSize + getPaddingLeft() + getPaddingRight()
                         , heightSize + getPaddingTop() + getPaddingBottom());
             }
             return;
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    private int getFinalSize(int measureSize, int calcSize) {
+        if (measureSize <= 0) {
+            return calcSize;
+        }
+        if (calcSize <= 0) {
+            return measureSize;
+        }
+        return Math.min(measureSize, calcSize);
     }
 
     private int getHoldHeight(int widthSize) {
