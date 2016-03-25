@@ -29,12 +29,7 @@ public class HoldScaleImageView extends ImageView {
     }
 
     public HoldScaleImageView(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, 0);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public HoldScaleImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        super(context, attrs, defStyleAttr);
         final TypedArray a = context.obtainStyledAttributes(
                 attrs, R.styleable.HoldScaleImageView, defStyleAttr, defStyleRes);
         holdWidth = a.getBoolean(R.styleable.HoldScaleImageView_holdWidth, false);
