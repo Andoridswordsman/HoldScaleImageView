@@ -1,10 +1,8 @@
 package com.blanke.hold;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -31,7 +29,7 @@ public class HoldScaleImageView extends ImageView {
     public HoldScaleImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         final TypedArray a = context.obtainStyledAttributes(
-                attrs, R.styleable.HoldScaleImageView, defStyleAttr, defStyleRes);
+                attrs, R.styleable.HoldScaleImageView, defStyleAttr,0);
         holdWidth = a.getBoolean(R.styleable.HoldScaleImageView_holdWidth, false);
         holdHeight = a.getBoolean(R.styleable.HoldScaleImageView_holdHeight, false);
         a.recycle();
